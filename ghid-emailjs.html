@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cum configurezi rapoartele pe email — Ghid EmailJS</title>
+  <meta name="description" content="Ghid complet pentru configurarea rapoartelor zilnice pe email din aplicația Miau, folosind EmailJS gratuit.">
+  <link rel="icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="logo">🐾 Miau</div>
+      <a href="https://app.miauapp.ro" class="btn-primary">Deschide aplicația</a>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <a href="index.html" class="back">← Înapoi la miauapp.ro</a>
+      <h1>📧 Cum configurezi rapoartele pe email</h1>
+      <p>Primești un email automat după fiecare tratament, cu doza, simptomele și stocurile rămase. Gratuit, fără server.</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+
+      <div class="note-box">
+        💡 <strong>Gratuit: 200 emailuri/lună</strong> — suficient pentru un tratament zilnic timp de 6+ luni. Nu necesită card bancar.
+      </div>
+
+      <h2>De ce ai nevoie</h2>
+      <ul>
+        <li>Un cont Google (Gmail)</li>
+        <li>Un cont gratuit pe <a href="https://emailjs.com" target="_blank">emailjs.com</a></li>
+        <li>10–15 minute</li>
+      </ul>
+
+      <h2>Pasul 1 — Creează cont pe EmailJS</h2>
+      <ol>
+        <li>Mergi la <a href="https://emailjs.com" target="_blank">emailjs.com</a></li>
+        <li>Apasă <strong>Sign Up</strong> și creează un cont gratuit</li>
+        <li>Confirmă emailul primit</li>
+      </ol>
+
+      <h2>Pasul 2 — Conectează Gmail-ul tău</h2>
+      <p>Acesta e contul <strong>de pe care</strong> se vor trimite emailurile.</p>
+      <ol>
+        <li>În dashboard-ul EmailJS, apasă <strong>Email Services</strong> în meniul din stânga</li>
+        <li>Apasă <strong>Add New Service</strong></li>
+        <li>Alege <strong>Gmail</strong></li>
+        <li>Apasă <strong>Connect Account</strong> → se deschide fereastra Google → alege contul tău Gmail și autorizează</li>
+        <li>Dă un nume serviciului (ex: <code>Miau App</code>) → apasă <strong>Create Service</strong></li>
+        <li>Notează sau copiază <strong>Service ID</strong> — arată ca <code>service_abc1234</code></li>
+      </ol>
+
+      <h2>Pasul 3 — Creează modelul de email (template)</h2>
+      <p>Template-ul definește cum arată emailul pe care îl primești.</p>
+      <ol>
+        <li>În meniul din stânga apasă <strong>Email Templates</strong></li>
+        <li>Apasă <strong>Create New Template</strong></li>
+        <li>Completează câmpurile:</li>
+      </ol>
+
+      <p><strong>To Email:</strong></p>
+      <div class="code-box">{{to_email}}</div>
+
+      <p><strong>Subject (subiect):</strong></p>
+      <div class="code-box">Miau — Tratament {{copil}} din {{data}}</div>
+
+      <p><strong>Body (conținutul emailului):</strong></p>
+      <div class="code-box">Bună ziua,
+
+Raport tratament pentru {{copil}}.
+Data: {{data}}, ora: {{ora}}
+
+Doză administrată: {{picaturi}} picături × {{unitati}} unități
+
+Simptome: {{simptome}}
+
+Stoc Staloral: {{stoc_pic}} picături rămase în flacon, {{stoc_fla}} flacoane rezervă
+Stoc antihistaminic: {{stoc_anti}}
+
+---
+Trimis automat de aplicația Miau 🐾</div>
+
+      <ol start="4">
+        <li>Apasă <strong>Save</strong></li>
+        <li>Notează <strong>Template ID</strong> — arată ca <code>template_xyz7890</code></li>
+      </ol>
+
+      <h2>Pasul 4 — Copiază Public Key</h2>
+      <ol>
+        <li>Apasă pe iconița de profil (sus dreapta) → <strong>Account</strong></li>
+        <li>Mergi la secțiunea <strong>General</strong></li>
+        <li>Copiază <strong>Public Key</strong> — un șir de ~20 de caractere</li>
+      </ol>
+
+      <h2>Pasul 5 — Introdu datele în aplicația Miau</h2>
+      <ol>
+        <li>Deschide Miau → tab <strong>Setări ⚙️</strong></li>
+        <li>Derulează la secțiunea <strong>Configurare EmailJS</strong></li>
+        <li>Completează cele 3 câmpuri: Service ID, Template ID, Public Key</li>
+        <li>Apasă <strong>Salvează</strong></li>
+        <li>Mai sus, în secțiunea <strong>Rapoarte zilnice pe email</strong>, activează toggle-ul și introdu adresa unde vrei să primești rapoartele</li>
+        <li>Apasă <strong>Salvează</strong></li>
+      </ol>
+
+      <div class="note-box">
+        ✅ <strong>Testare:</strong> Finalizează un tratament din aplicație → verifică inbox-ul. Dacă nu apare în 2–3 minute, verifică și folderul <strong>Spam</strong> (la prima utilizare unele emailuri ajung acolo).
+      </div>
+
+      <h2>Variabile disponibile în template</h2>
+      <p>Poți personaliza oricând textul emailului folosind aceste variabile:</p>
+      <table class="var-table">
+        <tr><th>Variabilă</th><th>Ce conține</th></tr>
+        <tr><td>{{copil}}</td><td>Numele tratamentului (ex: „Matei — pisică")</td></tr>
+        <tr><td>{{data}}</td><td>Data în format ZZ.LL.AAAA</td></tr>
+        <tr><td>{{ora}}</td><td>Ora la care s-a finalizat tratamentul</td></tr>
+        <tr><td>{{picaturi}}</td><td>Numărul de picături administrate</td></tr>
+        <tr><td>{{unitati}}</td><td>Unitățile (10 sau 100)</td></tr>
+        <tr><td>{{simptome}}</td><td>Lista simptomelor sau „Totul OK"</td></tr>
+        <tr><td>{{stoc_pic}}</td><td>Picături rămase în flacon</td></tr>
+        <tr><td>{{stoc_fla}}</td><td>Flacoane în rezervă</td></tr>
+        <tr><td>{{stoc_anti}}</td><td>Stoc antihistaminic (sau „N/A")</td></tr>
+      </table>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>🐾 Miau · <a href="https://app.miauapp.ro">app.miauapp.ro</a></p>
+      <p class="footer-note">Construit cu drag pentru familiile în imunoterapie</p>
+    </div>
+  </footer>
+
+</body>
+</html>
