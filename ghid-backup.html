@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backup și transfer date — Ghid Export / Import JSON</title>
+  <meta name="description" content="Cum faci backup la datele din Miau și cum transferi istoricul de pe un telefon pe altul.">
+  <link rel="icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="logo">🐾 Miau</div>
+      <a href="https://app.miauapp.ro" class="btn-primary">Deschide aplicația</a>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <a href="index.html" class="back">← Înapoi la miauapp.ro</a>
+      <h1>💾 Backup și transfer date</h1>
+      <p>Datele din Miau sunt stocate local pe telefonul tău. Folosește Export / Import JSON pentru a face backup sau a muta datele pe alt dispozitiv.</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+
+      <div class="warning-box">
+        ⚠️ <strong>Important:</strong> Dezinstalarea aplicației sau ștergerea datelor din browser șterge și istoricul. Fă backup periodic!
+      </div>
+
+      <h2>Cum faci Export (backup)</h2>
+      <ol>
+        <li>Deschide Miau → tab <strong>Setări ⚙️</strong></li>
+        <li>Derulează până la secțiunea <strong>Date și backup</strong></li>
+        <li>Apasă <strong>Export JSON</strong></li>
+        <li>Telefonul descarcă un fișier <code>miau-backup-AAAA-LL-ZZ.json</code></li>
+        <li>Salvează-l în Google Drive, iCloud sau trimite-l pe email — ca să nu-l pierzi dacă schimbi telefonul</li>
+      </ol>
+
+      <div class="note-box">
+        💡 Fișierul JSON conține tot: protocolul, istoricul tratamentelor, simptomele, stocurile, setările. Nu conține parole sau date sensibile din afara aplicației.
+      </div>
+
+      <h2>Cum faci Import (restaurare sau transfer)</h2>
+      <ol>
+        <li>Pe telefonul nou (sau după reinstalare), deschide Miau</li>
+        <li>Dacă e prima deschidere, finalizează onboarding-ul rapid (datele se vor suprascrie la import)</li>
+        <li>Mergi la <strong>Setări ⚙️ → Date și backup</strong></li>
+        <li>Apasă <strong>Import JSON</strong></li>
+        <li>Selectează fișierul <code>miau-backup-*.json</code> salvat anterior</li>
+        <li>Confirmă — aplicația încarcă toate datele din backup</li>
+      </ol>
+
+      <div class="warning-box">
+        ⚠️ Importul <strong>suprascrie</strong> datele existente. Dacă ai tratamente noi pe telefonul curent, exportă-le mai întâi înainte să imporți un backup vechi.
+      </div>
+
+      <h2>Transfer între două telefoane</h2>
+      <ol>
+        <li>Pe <strong>telefonul vechi</strong>: Setări → Export JSON → salvează fișierul</li>
+        <li>Transferă fișierul pe telefonul nou (AirDrop, WhatsApp, email, Google Drive etc.)</li>
+        <li>Pe <strong>telefonul nou</strong>: deschide Miau → Setări → Import JSON → selectează fișierul</li>
+      </ol>
+
+      <h2>Câte des să faci backup?</h2>
+      <p>Recomandat: o dată pe lună sau înainte să schimbi telefonul. Fișierul e mic (câțiva KB) și poate fi salvat oricând.</p>
+
+      <h2>Unde se salvează fișierul pe telefon?</h2>
+      <p><strong>iPhone:</strong> în aplicația Fișiere → Descărcări (sau iCloud Drive, dacă l-ai salvat acolo).</p>
+      <p><strong>Android:</strong> în folderul Downloads.</p>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>🐾 Miau · <a href="https://app.miauapp.ro">app.miauapp.ro</a></p>
+      <p class="footer-note">Construit cu drag pentru familiile în imunoterapie</p>
+    </div>
+  </footer>
+
+</body>
+</html>
