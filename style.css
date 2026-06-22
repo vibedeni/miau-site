@@ -345,6 +345,42 @@ footer a { color: var(--pink-dark); }
 .var-table td { padding: 9px 14px; border-bottom: 1px solid var(--border); }
 .var-table td:first-child { font-family: monospace; color: var(--pink-dark); }
 
+/* ── FAQ ── */
+.faq { padding: 64px 0; }
+.faq-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  background: var(--white);
+}
+.faq-q {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.faq-a {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ── Povestea Miau ── */
+.miau-story {
+  background: linear-gradient(135deg, var(--pink-light), var(--teal-light));
+  border-radius: var(--radius);
+  padding: 32px;
+  border: 1px solid var(--border);
+}
+.miau-story p {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.miau-story p:last-child { margin-bottom: 0; }
+
 @media (max-width: 600px) {
   .hero { padding: 40px 0 36px; }
   .features, .install, .guides, .donate { padding: 40px 0; }
