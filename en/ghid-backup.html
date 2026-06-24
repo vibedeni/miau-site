@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backup and data transfer — Export / Import JSON Guide</title>
+  <meta name="description" content="How to back up your data in Miau and transfer your history from one phone to another.">
+  <link rel="icon" href="../icon.svg">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="logo">🐾 Miau</div>
+      <nav class="header-nav">
+        <a href="index.html#guides" class="btn-primary btn-guides">📚 Guides</a>
+        <a href="https://revolut.me/denisalvcr" target="_blank" rel="noopener" class="btn-primary btn-coffee">☕ Buy us a coffee</a>
+        <a href="https://app.miauapp.ro" class="btn-primary">Open the app</a>
+        <a href="../ghid-backup.html" class="lang-switch">🇷🇴 RO</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <a href="index.html" class="back">← Back to miauapp.ro</a>
+      <h1>💾 Backup and data transfer</h1>
+      <p>Miau's data is stored locally on your phone. Use Export / Import JSON to back up or move your data to another device.</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+
+      <div class="warning-box">
+        ⚠️ <strong>Important:</strong> Uninstalling the app or clearing browser data also deletes your history. Back up regularly!
+      </div>
+
+      <h2>How to Export (backup)</h2>
+      <ol>
+        <li>Open Miau → <strong>Settings ⚙️</strong> tab</li>
+        <li>Scroll to the <strong>Data & backup</strong> section</li>
+        <li>Tap <strong>Export JSON</strong></li>
+        <li>If you have multiple children configured, a window appears with options:<br>
+          <strong>All</strong> — exports all children's data into a single file<br>
+          <strong>Each child's name</strong> — exports only that child's data</li>
+        <li>Your phone downloads the file <code>miau-backup-YYYY-MM-DD.json</code></li>
+        <li>Save it to Google Drive, iCloud, or email it to yourself — so you don't lose it if you change phones</li>
+      </ol>
+
+      <div class="note-box">
+        💡 The JSON file contains everything: the protocol, treatment history, symptoms, supplies, and settings. It contains no passwords or sensitive data from outside the app.
+      </div>
+
+      <h2>How to Import (restore or transfer)</h2>
+      <ol>
+        <li>On the new phone (or after reinstalling), open Miau</li>
+        <li>If it's the first time opening, finish the quick onboarding (data will be overwritten on import)</li>
+        <li>Go to <strong>Settings ⚙️ → Data & backup</strong></li>
+        <li>Tap <strong>Import JSON</strong></li>
+        <li>Select the previously saved <code>miau-backup-*.json</code> file</li>
+        <li>Confirm — the app loads all the data from the backup</li>
+      </ol>
+
+      <div class="warning-box">
+        ⚠️ Importing <strong>overwrites</strong> existing data. If you have new treatments on the current phone, export them first before importing an older backup.
+      </div>
+
+      <h2>Transferring between two phones</h2>
+      <ol>
+        <li>On the <strong>old phone</strong>: Settings → Export JSON → save the file</li>
+        <li>Transfer the file to the new phone (AirDrop, WhatsApp, email, Google Drive, etc.)</li>
+        <li>On the <strong>new phone</strong>: open Miau → Settings → Import JSON → select the file</li>
+      </ol>
+
+      <h2>How often should you back up?</h2>
+      <p>Recommended: once a month, or before changing phones. The file is small (a few KB) and can be saved anytime.</p>
+
+      <h2>Where is the file saved on the phone?</h2>
+      <p><strong>iPhone:</strong> in the Files app → Downloads (or iCloud Drive, if you saved it there).</p>
+      <p><strong>Android:</strong> in the Downloads folder.</p>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>🐾 Miau · <a href="https://app.miauapp.ro">app.miauapp.ro</a></p>
+      <p class="footer-note">Built with love for families going through immunotherapy</p>
+    </div>
+  </footer>
+
+</body>
+</html>

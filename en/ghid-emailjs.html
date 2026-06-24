@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to set up email reports — EmailJS Guide</title>
+  <meta name="description" content="Complete guide to setting up daily email reports from the Miau app, using free EmailJS.">
+  <link rel="icon" href="../icon.svg">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="logo">🐾 Miau</div>
+      <nav class="header-nav">
+        <a href="index.html#guides" class="btn-primary btn-guides">📚 Guides</a>
+        <a href="https://revolut.me/denisalvcr" target="_blank" rel="noopener" class="btn-primary btn-coffee">☕ Buy us a coffee</a>
+        <a href="https://app.miauapp.ro" class="btn-primary">Open the app</a>
+        <a href="../ghid-emailjs.html" class="lang-switch">🇷🇴 RO</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <a href="index.html" class="back">← Back to miauapp.ro</a>
+      <h1>📧 How to set up email reports</h1>
+      <p>Receive an automatic email after every treatment, with the dose, symptoms, and remaining supplies. Free, no server.</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+
+      <div class="note-box">
+        💡 <strong>Free: 200 emails/month</strong> — enough for a daily treatment for 6+ months. No credit card required.
+      </div>
+
+      <h2>What you'll need</h2>
+      <ul>
+        <li>A Google account (Gmail)</li>
+        <li>A free account on <a href="https://emailjs.com" target="_blank">emailjs.com</a></li>
+        <li>10–15 minutes</li>
+      </ul>
+
+      <h2>Step 1 — Create an EmailJS account</h2>
+      <ol>
+        <li>Go to <a href="https://emailjs.com" target="_blank">emailjs.com</a></li>
+        <li>Tap <strong>Sign Up</strong> and create a free account</li>
+        <li>Confirm the email you receive</li>
+      </ol>
+
+      <h2>Step 2 — Connect your Gmail</h2>
+      <p>This is the account emails will be sent <strong>from</strong>.</p>
+      <ol>
+        <li>In the EmailJS dashboard, click <strong>Email Services</strong> in the left menu</li>
+        <li>Click <strong>Add New Service</strong></li>
+        <li>Choose <strong>Gmail</strong></li>
+        <li>Click <strong>Connect Account</strong> → the Google window opens → choose your Gmail account and authorize</li>
+        <li>Give the service a name (e.g. <code>Miau App</code>) → click <strong>Create Service</strong></li>
+        <li>Note or copy the <strong>Service ID</strong> — it looks like <code>service_abc1234</code></li>
+      </ol>
+
+      <h2>Step 3 — Create the email template</h2>
+      <p>The template defines what the email you receive looks like.</p>
+      <ol>
+        <li>In the left menu click <strong>Email Templates</strong></li>
+        <li>Click <strong>Create New Template</strong></li>
+        <li>Fill in the fields:</li>
+      </ol>
+
+      <p><strong>To Email:</strong></p>
+      <div class="code-box">{{to_email}}</div>
+
+      <p><strong>Subject:</strong></p>
+      <div class="code-box">Miau — Treatment {{copil}} on {{data}}</div>
+
+      <p><strong>Body (email content):</strong></p>
+      <div class="code-box">Hello,
+
+Treatment report for {{copil}}.
+Date: {{data}}, time: {{ora}}
+
+Dose given: {{picaturi}} drops × {{unitati}} units
+
+Symptoms: {{simptome}}
+
+Staloral stock: {{stoc_pic}} drops left in the vial, {{stoc_fla}} spare vials
+Antihistamine stock: {{stoc_anti}}
+
+---
+Sent automatically by the Miau app 🐾</div>
+
+      <ol start="4">
+        <li>Click <strong>Save</strong></li>
+        <li>Note the <strong>Template ID</strong> — it looks like <code>template_xyz7890</code></li>
+      </ol>
+
+      <h2>Step 4 — Copy your Public Key</h2>
+      <ol>
+        <li>Click the profile icon (top right) → <strong>Account</strong></li>
+        <li>Go to the <strong>General</strong> section</li>
+        <li>Copy the <strong>Public Key</strong> — a string of ~20 characters</li>
+      </ol>
+
+      <h2>Step 5 — Enter the details in the Miau app</h2>
+      <ol>
+        <li>Open Miau → <strong>Settings ⚙️</strong> tab</li>
+        <li>Scroll to the <strong>EmailJS Setup</strong> section</li>
+        <li>Fill in the 3 fields: Service ID, Template ID, Public Key</li>
+        <li>Tap <strong>Save</strong></li>
+        <li>Above that, in the <strong>Daily email reports</strong> section, enable the toggle and enter the address you want reports sent to</li>
+        <li>Tap <strong>Save</strong></li>
+      </ol>
+
+      <div class="note-box">
+        ✅ <strong>Testing:</strong> Complete a treatment in the app → check your inbox. If it doesn't arrive within 2–3 minutes, also check your <strong>Spam</strong> folder (first emails sometimes land there).
+      </div>
+
+      <h2>Variables available in the template</h2>
+      <p>You can customize the email text anytime using these variables:</p>
+      <table class="var-table">
+        <tr><th>Variable</th><th>What it contains</th></tr>
+        <tr><td>{{copil}}</td><td>Treatment name (e.g. "Matei — cat")</td></tr>
+        <tr><td>{{data}}</td><td>Date in DD.MM.YYYY format</td></tr>
+        <tr><td>{{ora}}</td><td>Time the treatment was completed</td></tr>
+        <tr><td>{{picaturi}}</td><td>Number of drops given</td></tr>
+        <tr><td>{{unitati}}</td><td>Units (10 or 100)</td></tr>
+        <tr><td>{{simptome}}</td><td>List of symptoms or "All OK"</td></tr>
+        <tr><td>{{stoc_pic}}</td><td>Drops left in the vial</td></tr>
+        <tr><td>{{stoc_fla}}</td><td>Spare vials in stock</td></tr>
+        <tr><td>{{stoc_anti}}</td><td>Antihistamine stock (or "N/A")</td></tr>
+      </table>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>🐾 Miau · <a href="https://app.miauapp.ro">app.miauapp.ro</a></p>
+      <p class="footer-note">Built with love for families going through immunotherapy</p>
+    </div>
+  </footer>
+
+</body>
+</html>
