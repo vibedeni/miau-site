@@ -69,6 +69,16 @@ header .container {
 .header-link:hover { color: var(--text); background: var(--bg); text-decoration: none; }
 .header-donate { color: #A07020; }
 .header-donate:hover { background: #FFF8EC; color: #7A5500; }
+.lang-switch {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-light);
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border, #ddd);
+  transition: color 0.15s, background 0.15s;
+}
+.lang-switch:hover { color: var(--text); background: var(--bg); text-decoration: none; }
 
 .btn-primary.btn-guides { background: var(--teal); }
 .btn-primary.btn-coffee { background: #C4922A; }
